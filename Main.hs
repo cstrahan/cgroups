@@ -23,7 +23,7 @@ main = withSocketsDo $ scottyApp app >>= run
 app :: ScottyM ()
 app = do
     get "/cgroups" $ do
-        hasParams <- (not .null) <$> params
+        hasParams <- (not . null) <$> params
         when hasParams next
         cgroups <- resource $
             sourceDirectoryDeep False cgroups_mount
@@ -64,7 +64,7 @@ app = do
 
     invalidEntity ty val = do
         status notFound404
-        text (TL.concat [ty, "\"", TL.pack . show $ val, "\" does not exist."])
+        text (TL.concat [ty, "\"", TL.pack val, "\" does not exist."])
 
     withCGroup :: String -> (FP.FilePath -> ActionM ()) -> ActionM ()
     withCGroup cgroup f = do
