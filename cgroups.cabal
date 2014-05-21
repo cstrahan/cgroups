@@ -1,0 +1,34 @@
+name:                cgroups
+version:             1.0.0
+synopsis:            Sample app for Zalora application.
+license:             MIT
+license-file:        LICENSE
+author:              Charles Strahan
+maintainer:          charles.c.strahan@gmail.com
+category:            Web
+build-type:          Simple
+cabal-version:       >=1.10
+
+extra-source-files:
+  default.nix
+  module.nix
+  spawn-fcgi.nix
+
+executable cgroups
+  main-is:             Main.hs
+  ghc-options:         -Wall
+  default-language:    Haskell2010
+  build-depends:
+      base                 >= 4 && < 5
+    , aeson                == 0.7.*
+    , conduit              == 1.1.*
+    , conduit-combinators  == 0.2.*
+    , http-types           == 0.8.*
+    , network              >= 2.4
+    , scotty               == 0.7.*
+    , system-fileio        == 0.3.*
+    , system-filepath      == 0.4.*
+    , text                 >= 0.11
+    , transformers         == 0.3.*
+    , wai                  == 2.1.*
+    , wai-handler-fastcgi  == 2.0.*
